@@ -97,7 +97,7 @@
   /* Obsahové sekce */
   .content {
     padding: 3rem 2rem;
-    max-width: 800px;
+    max-width: 1700px;
     margin: auto;
     animation: fadeUp 1s ease-in-out;
   }
@@ -116,6 +116,7 @@
     padding: 2rem;
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* zabrání horizontálnímu scrollu */
   }
   
   #menu h2 {
@@ -127,7 +128,7 @@
   
   .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 sloupce vedle sebe */
     gap: 1.5rem;
   }
   
@@ -168,9 +169,26 @@
     border-bottom: none;
   }
   
+  /* Responzivita – postupně zmenšujeme počet sloupců */
+  @media (max-width: 1200px) {
+    .menu-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
   @media (max-width: 600px) {
     #menu h2 {
       font-size: 1.5rem;
+    }
+  
+    .menu-grid {
+      grid-template-columns: 1fr;
     }
   
     .menu-category {
